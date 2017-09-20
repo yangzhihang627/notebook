@@ -8,12 +8,13 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
     entry: {
-        app: path.resolve(APP_PATH, 'app.jsx')
+        app: path.resolve(APP_PATH, 'app2.jsx')
     },
     output: {
         path: BUILD_PATH,
         filename: 'bundle.js'
     },
+    // 开启dev source map
     devtool: 'eval-source-map',
     devServer: {
         historyApiFallback: true,
@@ -38,6 +39,7 @@ module.exports = {
             title: 'My first react app'
         })
     ],
+    // 可以在js中import jsx文件
     resolve: {
         extensions: ['', '.js', '.jsx'],
         root: APP_PATH
