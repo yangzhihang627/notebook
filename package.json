@@ -1,11 +1,11 @@
 {
-    "name": "my-first-webpack-app",
-    "version": "1.0.1",
-    "description": "webpack项目默认框架",
+    "name": "notebook",
+    "version": "1.0.0",
+    "description": "我的第一个react项目",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yangzhihang627/webpack-react-template.git"
+        "url": "https://github.com/yangzhihang627/notebook.git"
     },
     "scripts": {
         "build": "webpack",
