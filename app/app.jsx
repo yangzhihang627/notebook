@@ -1,14 +1,12 @@
+/*
+ * @file app main file
+ */
+
+import 'bootstrap/scss/bootstrap.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-function App() {
-  return (
-    <div className="container">
-      <h1>Hello React!ccc</h1>
-    </div>
-  );
-}
+import Deskmark from './components/Deskmark';
 
 const app = document.createElement('div');
 document.body.appendChild(app);
-ReactDOM.render(<App />, app);
+ReactDOM.render(<Deskmark />, app);

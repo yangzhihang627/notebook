@@ -29,14 +29,19 @@ module.exports = {
             include: APP_PATH
         }],
         loaders: [{
-            test: /\.jsx?$/,
-            loaders: ['babel'],
-            include: APP_PATH
-        }]
+                test: /\.jsx?$/,
+                loaders: ['babel'],
+                include: APP_PATH
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass']
+            }
+        ]
     },
     plugins: [
         new HtmlwebpackPlugin({
-            title: 'My first react app'
+            title: 'Deskmark app'
         })
     ],
     // 可以在js中import jsx文件
