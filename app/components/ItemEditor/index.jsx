@@ -4,34 +4,50 @@
  * @date 2017/09
  */
 import './style.scss';
-import React,{PropTypes} from 'react';
-// import marked from 'marked';
+import React, { PropTypes } from 'react';
 
 const propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired
 };
 
-function ItemEditor({item}) {
-  // if(!item || !item.id){
-  //   return (
-  //     <div className="col-md-8 item-show-layer-component">
-  //       <div className="no-select">请选择左侧列表里面的文章</div>
-  //     </div>
-  //   );
-  // }
-  // let content = marked(item.content);
-  return (
-    <div className="col-md-8 item-show-layer-component">
-      <div className="control-area">
-        <button className="btn btn-primary">保存</button>
-        <button className="btn btn-danger">取消</button>
+class ItemEditor extends React.Component {
+  render() {
+    const { onSave, onCancel } = this.props;
+    const item = this.props.item || {
+      title: '',
+      content: ''
+    };
+    let saveText;
+    if (item.id) {
+      saveText = '保存';
+    } else {
+      saveText = '创建';
+      this.refs.title.value = '';
+      this.refs.content.value = '';
+    }
+    let save = () => {
+      onSave({
+        ...item,
+        title: this.refs.title.value,
+        content: this.refs.content.value
+      });
+    };
+    return (
+      <div className="col-md-8 item-editor-component">
+        <div className="control-area">
+          <button onClick={save} className="btn btn-primary">{saveText}</button>
+          <button onClick={onCancel} className="btn btn-danger">取消</button>
+        </div>
+        <div className="edit-area">
+          <input ref="title" type="text" placeholder="请填写标题" defaultValue={item.title} />
+          <textarea ref="content" placeholder="请填写内容" defaultValue={item.content} />
+        </div>
       </div>
-      <div className="edit-area">
-        <input type="text" />
-        <textarea placeholder="请填写内容" />
-      </div>
-    </div>
-  );
+    );
+  }
+
 }
 
 ItemEditor.propTypes = propTypes;

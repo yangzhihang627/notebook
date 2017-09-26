@@ -4,23 +4,24 @@
  * @date 2017/09
  */
 
-import React,{PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 const propTypes = {
   item: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-function ListItem({item}) {
+function ListItem({ item, onClick }) {
+  let formatTime = '未知时间';
+  if (item.time) {
+    formatTime = new Date(item.time).toISOString().match(/(\d{4}-\d{2}-\d{2})/)[1];
+  }
   return (
-    <a
-      href="#"
-      className="list-group-item item-component"
-    >
-      <span className="label label-default label-pill pull-xs-right">
-        {item.time}
+    <a onClick={onClick} href="#" className="list-group-item item-component">
+      <span className="float-right">
+        {formatTime}
       </span>
-      {item.title}
+      <span className="item-title">{item.title}</span>
     </a>
   );
 }
