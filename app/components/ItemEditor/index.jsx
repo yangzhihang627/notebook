@@ -24,8 +24,12 @@ class ItemEditor extends React.Component {
       saveText = '保存';
     } else {
       saveText = '创建';
-      this.refs.title && (this.refs.title.value = '');
-      this.refs.content && (this.refs.content.value = '');
+      if (this.refs.title) {
+        this.refs.title.value = '';
+      }
+      if (this.refs.content) {
+        this.refs.content.value = '';
+      }
     }
     let save = () => {
       onSave({
