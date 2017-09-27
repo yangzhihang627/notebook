@@ -24,8 +24,8 @@ class ItemEditor extends React.Component {
       saveText = '保存';
     } else {
       saveText = '创建';
-      this.refs.title.value = '';
-      this.refs.content.value = '';
+      this.refs.title && (this.refs.title.value = '');
+      this.refs.content && (this.refs.content.value = '');
     }
     let save = () => {
       onSave({
@@ -37,7 +37,7 @@ class ItemEditor extends React.Component {
     return (
       <div className="col-md-8 item-editor-component">
         <div className="control-area">
-          <button onClick={save} className="btn btn-primary">{saveText}</button>
+          <button onClick={save} className="btn btn-primary btn-success">{saveText}</button>
           <button onClick={onCancel} className="btn btn-danger">取消</button>
         </div>
         <div className="edit-area">
