@@ -4,7 +4,7 @@
  * @date 2017/10
  */
 import './style.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import List from '../List';
 import ItemEditor from '../ItemEditor';
 import ItemShowLayer from '../ItemShowLayer';
@@ -23,7 +23,7 @@ class Deskmark extends React.Component {
     const { actions, state } = this.props;
     const { editing, selectId } = state.editor;
     const items = state.items;
-    const item = items.find((id) => id === selectId);
+    const item = items.find(({ id }) => id === selectId);
     const mainPart = editing
       ? <ItemEditor item={item} onSave={actions.saveEntry} onCancel={actions.cancelEdit} />
       : <ItemShowLayer item={item} onEdit={actions.editEntry} onDelete={actions.deleteEntry} />;

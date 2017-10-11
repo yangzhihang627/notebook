@@ -1,7 +1,7 @@
 /*
  * @file main file for actions
  */
-import * as storage from 'utils/storage';
+import * as storage from '../utils/storage';
 
 export const SELECT_ENTRY = 'SELECT_ENTRY';
 export const CREATE_NEW_ENTRY = 'CREATE_NEW_ENTRY';
@@ -76,12 +76,12 @@ export function saveEntry(item) {
     return dispatch => {
         if (id) {
             storage.updateEntry(id, title, content)
-                .then(() => dispatch(updateSavedEntry(id)))
+                // .then(() => dispatch(updateSavedEntry(id)))
                 .then(storage.getAll)
                 .then(items => dispatch(updateEntryList(items)));
         } else {
             storage.insertEntry(title, content)
-                .then(entry => dispatch(updateSavedEntry(entry.id)))
+                // .then(entry => dispatch(updateSavedEntry(entry.id)))
                 .then(storage.getAll)
                 .then(items => dispatch(updateEntryList(items)));
         }
