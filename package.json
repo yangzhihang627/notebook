@@ -8,7 +8,7 @@
     "url": "https://github.com/yangzhihang627/notebook.git"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
     "dev": "sudo webpack-dev-server --hot --host test.note.com --port 80",
     "test": "NODE_ENV=production mocha --compilers js:babel-core/register --require ignore-styles"
   },
@@ -32,6 +32,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
     "ignore-styles": "^5.0.1",
     "jsdom": "^9.8.3",
